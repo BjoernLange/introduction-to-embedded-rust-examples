@@ -1,0 +1,11 @@
+[package]
+name = "blinky-pac"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m-rt = "0.6"
+panic-halt = "0.2"
+# Include HAL so we do not have to provide a linker script.
+nrf52840-hal = { version = "0.15.0", features = ["rt"] }
+nrf52840-pac = "0.11.0"
