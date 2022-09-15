@@ -1,0 +1,37 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cargo",
+			"command": "build",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "Build nRF52840-MDK (cargo)",
+			"options": {
+				"cwd": "${workspaceRoot}/blinky-nrf52840-mdk"
+			}
+		},
+		{
+			"type": "shell",
+			"command": "docker run -v $(pwd)/..:/opt/project espressif/idf-rust:esp32_1.63.0.2 /bin/bash /opt/project/blinky-esp32/build-in-docker.sh",
+			"label": "Build ESP32 (docker)",
+			"options": {
+				"cwd": "${workspaceRoot}/blinky-esp32"
+			},
+			"problemMatcher": [
+				"$rustc"
+			]
+		},
+		{
+			"label": "Flash ESP32 and start openocd",
+			"type": "shell",
+			"command": ". $HOME/esp/esp-idf/export.sh && openocd -f board/esp32-wrover-kit-3.3v.cfg -c \"program_esp target/xtensa-esp32-espidf/debug/blinky-esp32.bin 0x10000 verify reset\"",
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceRoot}/blinky-esp32"
+			}
+		}
+	]
+}

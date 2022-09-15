@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceRoot}/blinky-nrf52840-mdk",
+            "executable": "./target/thumbv7em-none-eabihf/debug/blinky-nrf52840-mdk",
+            "name": "Debug nRF52840-MDK (pyocd)",
+            "request": "launch",
+            "type": "cortex-debug",
+            "showDevDebugOutput": "none",
+            "servertype": "pyocd",
+            "runToEntryPoint": "main",
+            "targetId": "nrf52",
+            "svdFile": "${workspaceRoot}/../nrfx/mdk/nrf52840.svd",
+            "preLaunchTask": "Build nRF52840-MDK (cargo)"
+        },
+        {
+            "type": "gdb",
+            "cwd": "${workspaceRoot}/blinky-esp32",
+            "name": "Debug ESP32 (openocd)",
+            "target": "./target/xtensa-esp32-espidf/debug/blinky-esp32",
+            "request": "launch",
+            "gdbpath": "xtensa-esp32-elf-gdb",
+            "autorun": [
+                "target extended-remote :3333",
+                "set substitute-path /opt/project ${workspaceRoot}",
+                "set substitute-path /opt/cargo ${env.HOME}/.cargo",
+                "monitor reset halt",
+                "break blinky::blinky_main",
+                "continue"
+            ],
+            "preLaunchTask": "Flash ESP32 and start openocd"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+[package]
+name = "blinky-esp32"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[profile.dev]
+debug = true
+opt-level = "z"
+
+[dependencies]
+blinky = { path = "../blinky" }
+anyhow = { version = "1", features = ["backtrace"] }
+esp-idf-sys = { version = "0.31.6", features = ["binstart"] }
+esp-idf-hal = "0.38"
+
+[build-dependencies]
+anyhow = "1"
+embuild = "0.28"
