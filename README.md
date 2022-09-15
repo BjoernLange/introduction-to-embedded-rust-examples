@@ -1,14 +1,14 @@
-# Embedded Rust Talk
+# Introduction to embedded Rust
 
 Code examples for my talk "Introduction to embedded Rust".
 
 ## blinky-pac
 
-Blinky example using a PAC crate.
+Blinky example using a Peripheral Access Crate (PAC).
 
 ## blinky-hal
 
-Blinky example using a HAL crate.
+Blinky example using a crate implementing the [embedded-hal](https://crates.io/crates/embedded-hal) (HAL crate).
 
 ## blinky-platform-independent
 
