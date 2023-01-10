@@ -30,6 +30,23 @@
                 "continue"
             ],
             "preLaunchTask": "Flash ESP32 and start openocd"
+        },
+        {
+            "type": "gdb",
+            "cwd": "${workspaceRoot}/blinky-esp32c3",
+            "name": "Debug ESP32-C3 (openocd)",
+            "target": "./target/riscv32imc-esp-espidf/debug/blinky-esp32c3",
+            "request": "launch",
+            "gdbpath": "${env:HOME}/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch5-8_4_0/riscv32-esp-elf/bin/riscv32-esp-elf-gdb",
+            "autorun": [
+                "target extended-remote :3333",
+                "set remote hardware-watchpoint-limit 2",
+                "monitor reset halt",
+                "flushregs",
+                "break blinky_esp32c3::main",
+                "continue"
+            ],
+            "preLaunchTask": "Start ESP32-C3 openocd"
         }
     ]
 }

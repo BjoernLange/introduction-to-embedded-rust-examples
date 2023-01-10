@@ -32,6 +32,27 @@
 			"options": {
 				"cwd": "${workspaceRoot}/blinky-esp32"
 			}
+		},
+		{
+			"type": "cargo",
+			"command": "build",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "Build ESP32-C3 (cargo)",
+			"options": {
+				"cwd": "${workspaceRoot}/blinky-esp32c3"
+			}
+		},
+		{
+			"label": "Start ESP32-C3 openocd",
+			"type": "shell",
+			"command": ". $HOME/export-esp.sh && $HOME/.espressif/tools/openocd-esp32/v0.11.0-esp32-20211220/openocd-esp32/bin/openocd -f board/esp32c3-builtin.cfg",
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceRoot}/blinky-esp32c3"
+			}
 		}
 	]
 }

@@ -11,6 +11,10 @@ Platform independent library containing the blinky code.
 
 Project including startup code for running the platform independent blinky program on an ESP32.
 
+## blinky-esp32c3
+
+Project including startup code for running the platform independent blinky program on an ESP32-C3.
+
 ## blinky-nrf52840-mdk
 
 Project including startup code for running the platform independent blinky program on an nRF52840-MDK.
